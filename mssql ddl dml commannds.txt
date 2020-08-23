@@ -1,0 +1,110 @@
+MSSQL SERVER
+ DDL AND DML COMMANDS
+
+1> select name from sys.databases
+2> go
+name                                                                                                                            
+--------------------------------------------------------------------------------------------------------------------------------
+master                                                                                                                          
+tempdb                                                                                                                          
+model                                                                                                                           
+msdb                                                                                                                            
+test                                                                                                                            
+mydb                                                                                                                            
+
+(6 rows affected)
+1> use myd
+2> go
+Msg 911, Level 16, State 1, Server pugal-VirtualBox, Line 1
+Database 'myd' does not exist. Make sure that the name is entered correctly.
+1> use mydb
+2> go
+Changed database context to 'mydb'.
+1> CREATE TABLE employee (id INT,name NVARCHAR(50),job NVARCHAR(50),gender NVARCHAR(50),address NVARCHAR(50));
+2> GO
+1> INSERT INTO employee VALUES(1,'selva','devops','male','perambalur');
+2> GO
+
+(1 rows affected)
+1> SELECT *FROM employee;
+2> go
+id          name                                               job                                                gender                                             address                                           
+----------- -------------------------------------------------- -------------------------------------------------- -------------------------------------------------- --------------------------------------------------
+          1 selva                                              devops                                             male                                               perambalur                                        
+
+(1 rows affected)
+1> INSERT INTO employee VALUES(2,'pugal','developer','male','cuddalore');
+2> INSERT INTO employee VALUES(3,'sathya','devops','female','trichy');
+3> INSERT INTO employee VALUES(4,'keerthana','devops','female','madurai');
+4> INSERT INTO employee VALUES(5,'usama','devops','male','vellore');
+5> GO
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+1> SELECT *FROM employee;
+2> GO
+id          name                                               job                                                gender                                             address                                           
+----------- -------------------------------------------------- -------------------------------------------------- -------------------------------------------------- --------------------------------------------------
+          1 selva                                              devops                                             male                                               perambalur                                        
+          2 pugal                                              developer                                          male                                               cuddalore                                         
+          3 sathya                                             devops                                             female                                             trichy                                            
+          4 keerthana                                          devops                                             female                                             madurai                                           
+          5 usama                                              devops                                             male                                               vellore                                           
+
+(5 rows affected)
+1> UPDATE employee SET address='salem' WHERE id=2;
+2> GO
+
+(1 rows affected)
+1> SELECT *FROM employee;
+2> GO
+id          name                                               job                                                gender                                             address                                           
+----------- -------------------------------------------------- -------------------------------------------------- -------------------------------------------------- --------------------------------------------------
+          1 selva                                              devops                                             male                                               perambalur                                        
+          2 pugal                                              developer                                          male                                               salem                                             
+          3 sathya                                             devops                                             female                                             trichy                                            
+          4 keerthana                                          devops                                             female                                             madurai                                           
+          5 usama                                              devops                                             male                                               vellore                                           
+
+(5 rows affected)
+1> DELETE FROM employee WHERE id=5;
+2> GO
+
+(1 rows affected)
+1> SELECT *FROM employee;
+2> GO
+id          name                                               job                                                gender                                             address                                           
+----------- -------------------------------------------------- -------------------------------------------------- -------------------------------------------------- --------------------------------------------------
+          1 selva                                              devops                                             male                                               perambalur                                        
+          2 pugal                                              developer                                          male                                               salem                                             
+          3 sathya                                             devops                                             female                                             trichy                                            
+          4 keerthana                                          devops                                             female                                             madurai                                           
+
+(4 rows affected)
+1> ALTER TABLE employee DROP COLUMN address;
+2> GO
+1> SELECT *FROM employee;
+2> GO
+id          name                                               job                                                gender                                            
+----------- -------------------------------------------------- -------------------------------------------------- --------------------------------------------------
+          1 selva                                              devops                                             male                                              
+          2 pugal                                              developer                                          male                                              
+          3 sathya                                             devops                                             female                                            
+          4 keerthana                                          devops                                             female                                            
+
+(4 rows affected)
+1> TRUNCATE TABLE employee;
+2> GO
+1> SELECT *FROM employee;
+2> GO
+id          name                                               job                                                gender                                            
+----------- -------------------------------------------------- -------------------------------------------------- --------------------------------------------------
+
+(0 rows affected)
+1> 
+
