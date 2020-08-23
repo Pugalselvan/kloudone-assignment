@@ -1,0 +1,12 @@
+CREATE TABLE employee_details
+(
+emp_ID INT Identity,
+emp_name Varchar(100),
+emp_salary Decimal (10,2)
+)
+
+INSERT INTO employee_details VALUES ('jill',1000);
+INSERT INTO employee_details VALUES ('rock',1200);
+INSERT INTO employee_details VALUES ('john',1100);
+INSERT INTO employee_details VALUES ('raj',1300);
+INSERT INTO employee_details VALUES ('maris',1400);

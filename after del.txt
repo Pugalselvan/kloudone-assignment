@@ -1,0 +1,19 @@
+CREATE TRIGGER trgAfterDelete ON [dbo].[employee_details] 
+AFTER DELETE
+AS
+	declare @empid int;
+	declare @empname varchar(100);
+	declare @empsalary decimal(10,2);
+	declare @audit_action varchar(100);
+
+	select @empid=d.emp_ID from deleted d;	
+	select @empname=d.emp_name from deleted d;	
+	select @empsal=d.emp_salary from deleted d;	
+	set @audit_action='Deleted -- After Delete Trigger.';
+
+	insert into Employee_Test_Audit
+(emp_ID,emp_name,emp_salary,Audit_Action,Audit_Timestamp) 
+	values(@empid,@empname,@empsal,@audit_action,getdate());
+
+	PRINT 'AFTER DELETE TRIGGER fired.'
+GO

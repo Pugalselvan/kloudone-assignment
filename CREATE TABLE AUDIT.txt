@@ -1,0 +1,8 @@
+CREATE TABLE employee_details_Audit
+(
+	emp_ID int,
+	emp_name varchar(100),
+	emp_Sal decimal (10,2),
+	Audit_Action varchar(100),
+	Audit_Timestamp datetime
+)
